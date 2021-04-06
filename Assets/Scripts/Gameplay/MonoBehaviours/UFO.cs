@@ -14,6 +14,7 @@ namespace Assets.Scripts.Gameplay.MonoBehaviours
     public interface IUFO
     {
         void CacheScreenRect(Rect rect);
+        void CacheSpaceshipTransform(Transform spaceshipTransform);
         void Enable();
         void ToggleShipRenderer(bool status);
         void Initialize();
@@ -45,18 +46,15 @@ namespace Assets.Scripts.Gameplay.MonoBehaviours
 
         #endregion
 
-        #region UNITY_FUNCTIONS
-
-        private void OnDisable()
-        {
-            UnsubscribeFromGameEvents();
-        }
-        #endregion
-
         #region API
         public void CacheScreenRect(Rect rect)
         {
             _rect = rect;
+        }
+
+        public void CacheSpaceshipTransform(Transform spaceshipTransform)
+        {
+            _spaceshipTransform = spaceshipTransform;
         }
 
         private void StartRepeatedShooting()
@@ -108,9 +106,7 @@ namespace Assets.Scripts.Gameplay.MonoBehaviours
 
             CacheConfigsToDependencies();
 
-            SubscribeToGameEvents();
             InitializeTurret();
-            
         }
         #endregion
 
@@ -127,19 +123,6 @@ namespace Assets.Scripts.Gameplay.MonoBehaviours
         private bool _bIsShipEnabled; 
         private Rect _rect;
 
-        private void SubscribeToGameEvents()
-        {
-            EventBus.GetInstance().Subscribe(GameConstants.EventKey.SpaceshipSpawned, OnSpaceshipLoaded);
-        }
-        private void UnsubscribeFromGameEvents()
-        {
-            EventBus.GetInstance().Unsubscribe(GameConstants.EventKey.SpaceshipSpawned, OnSpaceshipLoaded);
-        }
-        private void OnSpaceshipLoaded(IBasePayload basePayload)
-        {
-            SpaceshipSpawnedPayload spawnedPayload = (SpaceshipSpawnedPayload)basePayload;
-            _spaceshipTransform = spawnedPayload.spaceshipBehaviour.GetTransform();
-        }
         private void PublishUFOExplosionEvent()
         {
             EventBus.GetInstance().Publish(new UfoExplodedPayload(ufoLevel, transform.position));
@@ -187,6 +170,10 @@ namespace Assets.Scripts.Gameplay.MonoBehaviours
             {
                 directionToSpaceship = _spaceshipTransform.transform.position - transform.position;
                 directionToSpaceship.Normalize();
+            }
+            else
+            {
+                Logger.Error($"missing reference to spaceship transform");
             }
 
             return directionToSpaceship;

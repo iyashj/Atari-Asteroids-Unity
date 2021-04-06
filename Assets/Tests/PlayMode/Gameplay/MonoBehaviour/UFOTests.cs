@@ -20,11 +20,6 @@ namespace Assets.Tests.PlayMode.Gameplay.MonoBehaviour
         private PrivateObject _ufoPrivateObject;
         private UFO _ufoObject;
         private Rigidbody2D _rb2d;
-        private const string privateFieldSpaceshipTransform = "_spaceshipTransform";
-        private const string privateMethodApplyVelocity = "ApplyVelocity";
-        private const string privateFieldUFOConfig = "_ufoConfig";
-        private const string privateMethodInitializeAttachedComponents = "InitializeAttachedComponents";
-        private const string privateFieldObjectRigibody2D = "ObjectRigibody2D";
         private const string privateFieldIsShipEnabled = "_bIsShipEnabled";
 
         [OneTimeSetUp]
@@ -41,19 +36,6 @@ namespace Assets.Tests.PlayMode.Gameplay.MonoBehaviour
             yield return new WaitWhile(_testInitializationPredicate);
             var attachedUFOMonoBehaviour = baseObject.GetComponent<UFO>();
             Assert.NotNull(attachedUFOMonoBehaviour, "does not have UFO attached");
-        }
-
-        [UnityTest]
-        public IEnumerator _6_TestOnPublishingSpaceshipLoadedEvent()
-        {
-            yield return new WaitWhile(_testInitializationPredicate);
-            var expectedTransform = new GameObject("dummySpaceShip").transform;
-            CacheFields();
-            ISpaceship spaceshipObject = Substitute.For<ISpaceship>();
-            spaceshipObject.GetTransform().Returns(expectedTransform);
-            EventBus.GetInstance().Publish(new SpaceshipSpawnedPayload(spaceshipObject));
-            var ufoObtainedSpaceshipTransform = (Transform)_ufoPrivateObject.GetField(privateFieldSpaceshipTransform);
-            Assert.AreNotEqual(ufoObtainedSpaceshipTransform, expectedTransform);
         }
 
         [UnityTest]
@@ -83,8 +65,8 @@ namespace Assets.Tests.PlayMode.Gameplay.MonoBehaviour
         {
             yield return new WaitWhile(_testInitializationPredicate);
             var _privateBaseObject = new PrivateObject(baseObject);
-
             baseObject.Initialize();
+            CacheFields();
             _ufoObject.Enable();
             _ufoObject.ToggleShipRenderer(expectedShipRenderingStatus);
             

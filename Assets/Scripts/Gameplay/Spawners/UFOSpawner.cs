@@ -37,6 +37,7 @@ namespace Assets.Scripts.Gameplay.Spawners
         private MonoBehaviour _coroutineReferenceMonoBehaviour;
         private Coroutine _ufoEnablingRoutine;
         private readonly Rect _rect;
+        private Transform _spaceshipTransform;
 
         /// <summary>
         /// Reference to smallUFO asset acting as a prefab
@@ -84,15 +85,23 @@ namespace Assets.Scripts.Gameplay.Spawners
             EventBus.GetInstance().Subscribe(EventKey.UFOExploded, OnUFOExploded);
             EventBus.GetInstance().Subscribe(EventKey.GameOver, OnGameOver);
             EventBus.GetInstance().Subscribe(EventKey.PlayAgainPayload, OnPlayAgain);
-
+            EventBus.GetInstance().Subscribe(EventKey.SpaceshipSpawned, OnSpaceshipLoaded);
         }
+
         private void UnsubscribeFromGameEvents()
         {
             EventBus.GetInstance().Unsubscribe(EventKey.UFOExploded, OnUFOExploded);
             EventBus.GetInstance().Unsubscribe(EventKey.GameOver, OnGameOver);
             EventBus.GetInstance().Unsubscribe(EventKey.PlayAgainPayload, OnPlayAgain);
-
+            EventBus.GetInstance().Unsubscribe(EventKey.SpaceshipSpawned, OnSpaceshipLoaded);
         }
+
+        private void OnSpaceshipLoaded(IBasePayload basePayload)
+        {
+            SpaceshipSpawnedPayload spawnedPayload = (SpaceshipSpawnedPayload)basePayload;
+            _spaceshipTransform = spawnedPayload.spaceshipBehaviour.GetTransform();
+        }
+
         private void OnPlayAgain(IBasePayload obj)
         {
             Spawn();
@@ -147,10 +156,12 @@ namespace Assets.Scripts.Gameplay.Spawners
         {
             if (Random.Range(0, 1.0f) < 0.5f)
             {
+                _ufoLarge.CacheSpaceshipTransform(_spaceshipTransform);
                 _ufoLarge.Enable();
             }
             else
             {
+                _ufoSmall.CacheSpaceshipTransform(_spaceshipTransform);
                 _ufoSmall.Enable();
             }
         }

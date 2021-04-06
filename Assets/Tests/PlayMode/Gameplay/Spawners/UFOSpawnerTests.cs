@@ -4,16 +4,20 @@ using Assets.Scripts.Gameplay.Spawners;
 using Assets.Scripts.GameStructure.Communication.EventSystem;
 using Assets.Scripts.GameStructure.Communication.Payloads;
 using Assets.Tests.PlayMode.Gameplay.Subsystems;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.TestTools;
+using Assert = NUnit.Framework.Assert;
 
 namespace Assets.Tests.PlayMode.Gameplay.Spawners
 {
     public class UFOSpawnerTests
     {
         private IUFOSpawner _ufoSpawner;
+        private PrivateObject _privateObject;
+        private const string spaceshipTransform = "_spaceshipTransform";
 
         [OneTimeSetUp]
         public void OneTimeSetup()
@@ -27,6 +31,8 @@ namespace Assets.Tests.PlayMode.Gameplay.Spawners
                 var rect = new Rect(Vector3.zero, new Vector2(1, 1));
                 _ufoSpawner = new UFOSpawner(rect, monoBehaviourReference);
                 _ufoSpawner.Preload();
+                _privateObject = new PrivateObject(_ufoSpawner);
+                _privateObject.SetField(spaceshipTransform, ufoObject.transform);
             };
         }
 

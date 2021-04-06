@@ -24,8 +24,12 @@ namespace Assets.Tests.PlayMode.Gameplay.Spawners
         [OneTimeSetUp]
         public void OnetimeSetup()
         {
-            asteroidSpawner = new AsteroidSpawner();
-            asteroidSpawner.Preload();
+
+            SceneManager.LoadSceneAsync(TestCommons.TestScene).completed += operation =>
+            {
+                asteroidSpawner = new AsteroidSpawner();
+                asteroidSpawner.Preload();
+            };
         }
 
         [TearDown]
