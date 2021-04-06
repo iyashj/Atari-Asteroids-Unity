@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.TestTools;
 using Assert = NUnit.Framework.Assert;
 
-namespace Tests.PlayMode
+namespace Assets.Tests.PlayMode
 {
     public class GameManagerTests
     {
