@@ -1,11 +1,7 @@
 ﻿using System.Collections;
 using Assets.Scripts.GameConstants;
-using Assets.Scripts.Gameplay.MonoBehaviours;
-using Assets.Scripts.GameStructure.Communication.EventSystem;
-using Assets.Scripts.GameStructure.Communication.Payloads;
 using Assets.Tests.PlayMode.Gameplay.Subsystems;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using NSubstitute;
 using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.TestTools;
@@ -21,6 +17,7 @@ namespace Assets.Tests.PlayMode.Gameplay.MonoBehaviour
         private UFO _ufoObject;
         private Rigidbody2D _rb2d;
         private const string privateFieldIsShipEnabled = "_bIsShipEnabled";
+        private const string privateMethodStopRepeatedShooting = "StopRepeatedShooting";
 
         [OneTimeSetUp]
         public override void OneTimeSetup()
@@ -78,6 +75,12 @@ namespace Assets.Tests.PlayMode.Gameplay.MonoBehaviour
             isShipToggled &= _ufoObject.gameObject.activeSelf == expectedShipRenderingStatus;
 
             Assert.True(isShipToggled);
+
+            if (isShipToggled)
+            {
+                _ufoPrivateObject.Invoke(privateMethodStopRepeatedShooting);
+            }
+
         }
 
         [UnityTest]
@@ -94,6 +97,5 @@ namespace Assets.Tests.PlayMode.Gameplay.MonoBehaviour
             _ufoPrivateObject = new PrivateObject(_ufoObject);
             _rb2d = baseObject.GetComponent<Rigidbody2D>();
         }
-
     }
 }
