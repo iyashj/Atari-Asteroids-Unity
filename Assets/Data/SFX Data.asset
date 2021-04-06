@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7570354e51ca07c47b86d284a99358b8, type: 3}
+  m_Name: SFX Data
+  m_EditorClassIdentifier: 
+  _defaultVolume: 0.4
+  _sfxDataSet:
+  - SfxEvent: 1
+    AudioClip: {fileID: 8300000, guid: 2fd5ae3e6875f644eb60ba9a40a61973, type: 3}
+  - SfxEvent: 2
+    AudioClip: {fileID: 8300000, guid: 2fd5ae3e6875f644eb60ba9a40a61973, type: 3}
+  - SfxEvent: 3
+    AudioClip: {fileID: 8300000, guid: 2fd5ae3e6875f644eb60ba9a40a61973, type: 3}
+  - SfxEvent: 4
+    AudioClip: {fileID: 8300000, guid: 502c3c1bc2ab16e48adf67b437ded3a0, type: 3}
+  - SfxEvent: 5
+    AudioClip: {fileID: 8300000, guid: c5cced3927f0f9140972f3cc86eb8a7e, type: 3}

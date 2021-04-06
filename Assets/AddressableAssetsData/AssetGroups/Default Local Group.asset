@@ -1,0 +1,85 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Default Local Group
+  m_EditorClassIdentifier: 
+  m_GroupName: Default Local Group
+  m_Data:
+    m_SerializedData: []
+  m_GUID: a6fc2752bff23594785696cb49bf30db
+  m_SerializeEntries:
+  - m_GUID: 9ad07939bbcacfe409f8b7089a7c12b6
+    m_Address: Prefabs/Spaceship
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: 5a05cf376d8a07a449fb6c93433a817f
+    m_Address: Prefabs/PlayerBullet
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: c83d1debc7cf9fe4fa25028ceda9e98a
+    m_Address: Prefabs/BaseAsteroid
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: 5fef10a6591185d4189457ea8657b22d
+    m_Address: Prefabs/AsteroidLevel0
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: 119d9e09dd6d35743b534056c7e39c82
+    m_Address: Prefabs/AsteroidLevel2
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: 1e024fbba13aaf34fb6557fe35d3f8fa
+    m_Address: Prefabs/AsteroidLevel1
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: c8522d8aa0775f444becf7cfb6da9d01
+    m_Address: Prefabs/UFOLarge
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: 7e596162c8c050346bb694e7f932deaa
+    m_Address: Prefabs/UFOSmall
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: 40099b5f3336d31459d8088dc92b9f8b
+    m_Address: Prefabs/EnemyBullet
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: dfbdf2134f769dc4486867bd0989e1f4
+    m_Address: Prefabs/Explosion
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 70aaf95f048d08d4ebbc270559e4da51, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 31132903d5d626748b502ed60f0fcf86, type: 2}
+    - {fileID: 11400000, guid: 193d5cf99df41e94999dd634b49b56c0, type: 2}
