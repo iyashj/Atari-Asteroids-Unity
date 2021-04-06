@@ -22,18 +22,15 @@ namespace Assets.Tests.PlayMode.Gameplay.Spawners
         [OneTimeSetUp]
         public void OneTimeSetup()
         {
-            SceneManager.LoadSceneAsync(TestCommons.TestScene).completed += operation =>
-            {
-                Time.timeScale = 100f;
-                TestCommons.ResetEventLibrary();
-                var ufoObject = new GameObject("ufo");
-                var monoBehaviourReference = ufoObject.AddComponent<TestReferenceMonoBehaviour>();
-                var rect = new Rect(Vector3.zero, new Vector2(1, 1));
-                _ufoSpawner = new UFOSpawner(rect, monoBehaviourReference);
-                _ufoSpawner.Preload();
-                _privateObject = new PrivateObject(_ufoSpawner);
-                _privateObject.SetField(spaceshipTransform, ufoObject.transform);
-            };
+            Time.timeScale = 100f;
+            TestCommons.ResetEventLibrary();
+            var ufoObject = new GameObject("ufo");
+            var monoBehaviourReference = ufoObject.AddComponent<TestReferenceMonoBehaviour>();
+            var rect = new Rect(Vector3.zero, new Vector2(1, 1));
+            _ufoSpawner = new UFOSpawner(rect, monoBehaviourReference);
+            _ufoSpawner.Preload();
+            _privateObject = new PrivateObject(_ufoSpawner);
+            _privateObject.SetField(spaceshipTransform, ufoObject.transform);
         }
 
         [UnityTest]
@@ -56,7 +53,7 @@ namespace Assets.Tests.PlayMode.Gameplay.Spawners
 
         private IEnumerator IsUFOGettingEnabledAfterRoutine(UFO[] ufosActiveBeforeSpawnCall)
         {
-            yield return new WaitForSeconds(Scripts.GameConstants.UFO.DelayBetweenSubsequentSpawns + 0.1f);
+            yield return new WaitForSeconds(Scripts.GameConstants.UFO.DelayBetweenSubsequentSpawns + 2f);
             var ufosActiveAfterSpawnCall = Object.FindObjectsOfType<UFO>();
             Assert.True(ufosActiveAfterSpawnCall.Length - ufosActiveBeforeSpawnCall.Length == 1);
         }
