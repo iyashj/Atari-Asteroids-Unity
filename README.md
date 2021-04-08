@@ -93,7 +93,7 @@ The following is an image of poolable item hierarchy:
 
 ![Poolable Item Hierarchy Class Diagram](CodeDesign/Spawners.PNG)
 
-There is a separate category of classes that are responsible for holding a reference to the pool and calling methods for using these pools in the game.These are called Spawner classes. Consider a case for AsteroidSpawner -  Indeed asteroids are pooled in the previously mentioned class system. But the point where they are supposed to load prefab, where they are supposed to spawn, and the level of asteroid to spawn is all kept enclosed in AsteroidSpawner. Spawners don’t always need to have a pool, ratherthey act as an intermediary for othercontaining objects. Thus acting as a **facade**.
+There is a separate category of classes that are responsible for holding a reference to the pool and calling methods for using these pools in the game.These are called Spawner classes. Consider a case for AsteroidSpawner -  Indeed asteroids are pooled in the previously mentioned class system. But the point where they are supposed to load prefab, where they are supposed to spawn, and the level of asteroid to spawn is all kept enclosed in AsteroidSpawner. Spawners don’t always need to have a pool, ratherthey act as an intermediary for other containing objects. Thus acting as a `facade`.
 
 
 **Subsystems:**
